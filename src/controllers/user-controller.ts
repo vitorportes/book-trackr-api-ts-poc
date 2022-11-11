@@ -4,7 +4,6 @@ import {
   getUserIdByEmail,
 } from "../repositories/user-repository.js";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
 import bcrypt, { hashSync } from "bcrypt";
 import { Request, Response } from "express";
 import { Login, User } from "../protocols/user.js";
