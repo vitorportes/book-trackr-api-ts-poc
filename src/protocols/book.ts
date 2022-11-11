@@ -1,4 +1,5 @@
-export type Book = {
+export type BookEntity = {
+  id: number;
   name: string;
   author: string;
   publisher: string;
@@ -6,3 +7,5 @@ export type Book = {
   year: number;
   status?: boolean;
 };
+
+export type Book = Omit<BookEntity, "id">;
