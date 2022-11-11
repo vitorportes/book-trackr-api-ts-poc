@@ -20,4 +20,14 @@ function deleteBook(bookId: number) {
   return db.query(`DELETE FROM books WHERE id = $1`, [bookId]);
 }
 
-export { getAllBooks, createBook, updateBookStatus, deleteBook };
+function getFinishedBooksAmount() {
+  return db.query(`SELECT COUNT(*) FROM books WHERE status=true`);
+}
+
+export {
+  getAllBooks,
+  createBook,
+  updateBookStatus,
+  deleteBook,
+  getFinishedBooksAmount,
+};

@@ -2,6 +2,7 @@ import {
   createBook,
   deleteBook,
   getAllBooks,
+  getFinishedBooksAmount,
   updateBookStatus,
 } from "../repositories/book-repository.js";
 import { Request, Response } from "express";
@@ -53,4 +54,21 @@ async function removeBook(req: Request, res: Response) {
   }
 }
 
-export { getBooks, insertNewBook, markBookAsRead, removeBook };
+async function finishedBooksAmount(req: Request, res: Response) {
+  try {
+    const finished = (await getFinishedBooksAmount()).rows[0].count;
+    console.log(finished);
+    return res.send(`Você já leu ${finished} livros!`);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+}
+
+export {
+  getBooks,
+  insertNewBook,
+  markBookAsRead,
+  removeBook,
+  finishedBooksAmount,
+};
