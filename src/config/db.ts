@@ -1,11 +1,9 @@
 import pg from "pg";
-import dotenv from "dotenv";
-dotenv.config();
 
 const { Pool } = pg;
 
 const db = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: "postgres://postgres:1234@localhost:5432/book-trackr",
   ssl: {
     rejectUnauthorized: false,
   },
